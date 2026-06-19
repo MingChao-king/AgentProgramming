@@ -1,0 +1,20 @@
+# OS files
+.DS_Store
+Thumbs.db
+
+# Editor files
+*.swp
+*.swo
+*~
+
+# IDE files
+.idea/
+.vscode/
+*.iml
+
+# Temp files
+*.tmp
+*.log
+
+# Knowledge base (managed separately, cloned at runtime)
+knowledge-base/

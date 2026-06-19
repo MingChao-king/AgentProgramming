@@ -1,0 +1,24 @@
+{
+  "name": "agent-programming",
+  "description": "AgentProgramming：融合 Superpowers 的结构化工作流与四级缓存知识体系的新一代开发方法论。自动引导 brainstorming → outline-first → TDD → code-review → closing-the-loop 六阶段工作流，让每次编码都积累可复用的知识资产。",
+  "version": "1.0.0",
+  "author": {
+    "name": "MingChao",
+    "email": "mingchao@example.com"
+  },
+  "homepage": "https://github.com/MingChao-king/AgentProgramming",
+  "repository": "https://github.com/MingChao-king/AgentProgramming",
+  "license": "MIT",
+  "keywords": [
+    "skills",
+    "agent-programming",
+    "tdd",
+    "brainstorming",
+    "knowledge-management",
+    "code-review",
+    "debugging",
+    "workflows",
+    "four-level-cache",
+    "closing-the-loop"
+  ]
+}
