@@ -113,7 +113,7 @@ SessionStart（自动注入）
 
 ## 技能类型
 
-**刚性技能**（TDD, systematic-debugging, closing-the-loop）：严格遵循。不能为图省事而跳过步骤。
+**刚性技能**（TDD, subagent-driven-development, systematic-debugging, closing-the-loop）：严格遵循。不能为图省事而跳过步骤。
 
 **柔性技能**（brainstorming, writing-plans）：将原则适配到具体上下文。
 
@@ -144,15 +144,31 @@ SessionStart（自动注入）
 
 用户指令说**做什么**（WHAT），不说**怎么做**（HOW）。"添加 X"或"修复 Y"不意味着跳过工作流。用户说的"简单"、"快速"、"就改一行"不是让你跳过 brainstorming 的理由。
 
+## 知识库结构
+
+AgentProgramming 的知识库存储在插件的 `knowledge-base/` 目录中，**不是代码仓库**：
+
+```
+${CLAUDE_PLUGIN_ROOT}/knowledge-base/        ← 本地路径（插件目录下）
+│
+├── agent编程守则.md              ← L1 方法论（极少改动）
+├── 通用编码经验.md                ← L2 跨项目模式库（按技术域归类，不含项目引用）
+├── Agent四级缓存编程范式.md       ← 元文档（全局架构总述）
+│
+└── {项目名}/                      ← 每个项目一个文件夹
+    ├── {项目名}-roadmap.md        ← 项目路线（按时间倒序，分阶段记录每一步）
+    └── {项目名}-experience.md     ← L3 项目速查（≥150 行，6 个强制模块）
+```
+
+**远程仓库：** `https://gitee.com/gudu-code-man/agent-programming-mode.git`
+
+> ⚠ Roadmap 和 L3 experience 都放在知识库的 `{项目名}/` 文件夹下，**绝对不要**推到代码仓库。
+
 ## 知识库同步
 
-AgentProgramming 的知识库存储在插件的 `knowledge-base/` 目录中，远程仓库为：
-
-```
-https://gitee.com/gudu-code-man/agent-programming-mode.git
-```
-
 ### 首次使用（自动 clone）
+
+如果 `knowledge-base/` 目录不存在或为空，先 clone：
 
 如果 `knowledge-base/` 目录不存在或为空，先 clone：
 
