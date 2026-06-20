@@ -64,13 +64,34 @@ L4 源码       → 唯一真相源（兜底、仲裁、验证）
 
 ```
 SessionStart（自动注入）
-  → 阶段一：理解（brainstorming + L4 勘探 + 大纲先行）
+  → 阶段一：理解（brainstorming + L4 勘探 + 大纲先行 + 测试场景设计）
   → 阶段二：规划（writing-plans + 防重复 + L2/L3 查找）
   → 阶段三：实现（TDD + subagent + L4 验证 + 系统调试）
   → 阶段四：验证（code-review + verification + 冒烟测试）
   → 阶段五：闭环（closing-the-loop — 钢印 5 项 + 回写 L2/L3）
   → 阶段六：收尾（finishing-a-development-branch）
 ```
+
+### ⚠ 工作流是循环，不是一次性的
+
+**这不是只在新项目或新功能时走的流程。任何代码变更——无论大小、无论原因——都是编码任务，都要走完整流程。**
+
+```
+新功能开发 → brainstorming → writing-plans → TDD → ... → closing-the-loop
+     ↑                                                           │
+     │                                                           │
+     └──── 发现 bug / 要改功能 / 要优化 ─── 重新进入工作流 ──────┘
+```
+
+| 场景 | 触发哪些技能 | 结束时 |
+|------|------------|--------|
+| **新功能** | brainstorming → writing-plans → TDD → ... | closing-the-loop ✅ |
+| **修 bug** | systematic-debugging（修复 → closing-the-loop） | closing-the-loop ✅ |
+| **改功能/加逻辑** | brainstorming → writing-plans → TDD → ... | closing-the-loop ✅ |
+| **重构** | brainstorming → writing-plans → TDD → ... | closing-the-loop ✅ |
+| **配置变更** | brainstorming → closing-the-loop（mini） | closing-the-loop ✅ |
+
+**关键原则：只要有代码变更，就必须以 closing-the-loop 收尾。没有例外。**
 
 ## 技能列表
 
@@ -139,6 +160,9 @@ SessionStart（自动注入）
 | "我知道那是什么意思" | 知道概念 ≠ 使用技能。调用它。 |
 | "这个经验太简单不值得记" | 今天"简单"的经验，明天就忘了。L2/L3 就是靠这些小经验积累的。 |
 | "先跳过回写，下次再补" | 回写是任务的一部分，不是可选的。不写 = 没完成。 |
+| "这只是修个 bug，不用走完整流程" | bug 修复也是编码任务。systematic-debugging 的第四阶段显式要求触发 closing-the-loop。修完不闭环 = 经验丢失。 |
+| "功能已经写好了，就改一小点，不需要 brainstorming" | "一小点"改动也能引入新 bug。至少走 mini brainstorming + closing-the-loop。 |
+| "这是第二轮改动了，上次已经走过 closing-the-loop" | 每次代码变更独立做 closing-the-loop。上次闭环的是上一轮，这一轮的经验还没记录。 |
 
 ## 用户指令
 
