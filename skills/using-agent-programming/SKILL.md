@@ -86,7 +86,7 @@ SessionStart（自动注入）
 | 场景 | 触发哪些技能 | 结束时 |
 |------|------------|--------|
 | **新功能** | brainstorming → writing-plans → TDD → ... | closing-the-loop ✅ |
-| **修 bug** | systematic-debugging（修复 → closing-the-loop） | closing-the-loop ✅ |
+| **修 bug** | brainstorming（bug澄清+测试场景）→ systematic-debugging → closing-the-loop | closing-the-loop ✅ |
 | **改功能/加逻辑** | brainstorming → writing-plans → TDD → ... | closing-the-loop ✅ |
 | **重构** | brainstorming → writing-plans → TDD → ... | closing-the-loop ✅ |
 | **配置变更** | brainstorming → closing-the-loop（mini） | closing-the-loop ✅ |
