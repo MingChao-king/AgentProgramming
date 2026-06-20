@@ -38,7 +38,7 @@ cd /path/to/AgentProgramming
 
 ```bash
 # 注册市场
-/plugin marketplace add MingChao-king/AgentProgramming-marketplace
+/plugin marketplace add MingChao-king/SuperProgramming
 
 # 安装插件
 /plugin install superprogramming@superprogramming-marketplace
@@ -127,5 +127,5 @@ MIT License — 详见 [LICENSE](LICENSE) 文件
 
 ## 社区
 
-- **仓库**: https://github.com/MingChao-king/AgentProgramming
-- **问题反馈**: https://github.com/MingChao-king/AgentProgramming/issues
+- **仓库**: https://github.com/MingChao-king/SuperProgramming
+- **问题反馈**: https://github.com/MingChao-king/SuperProgramming/issues
