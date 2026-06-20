@@ -24,7 +24,7 @@ if %ERRORLEVEL% EQU 0 (
 REM If no bash, output raw JSON directly
 echo No bash found - using fallback JSON output
 if "%HOOK_NAME%"=="session-start" (
-    echo { "hookSpecificOutput": { "hookEventName": "SessionStart", "additionalContext": "AgentProgramming methodology loaded (bash unavailable - full skill content not injected). Use Skill tool to invoke 'agent-programming:using-agent-programming'." } }
+    echo { "hookSpecificOutput": { "hookEventName": "SessionStart", "additionalContext": "SuperProgramming methodology loaded (bash unavailable - full skill content not injected). Use Skill tool to invoke 'superprogramming:using-agent-programming'." } }
 )
 
 exit /b 0

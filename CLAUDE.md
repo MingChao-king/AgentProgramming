@@ -1,8 +1,8 @@
-# AgentProgramming — 插件开发指南
+# SuperProgramming — 插件开发指南
 
 ## 开发哲学
 
-AgentProgramming 自身的开发也遵循 AgentProgramming 方法论。这是递归的 —— 我们用来构建插件的方法论，就是插件本身所倡导的方法论。
+SuperProgramming 自身的开发也遵循 SuperProgramming 方法论。这是递归的 —— 我们用来构建插件的方法论，就是插件本身所倡导的方法论。
 
 ## 如果你是 AI Agent
 

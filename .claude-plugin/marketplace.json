@@ -1,14 +1,14 @@
 {
-  "name": "agent-programming-marketplace",
-  "description": "AgentProgramming 开发方法论插件市场",
+  "name": "superprogramming-marketplace",
+  "description": "SuperProgramming 开发方法论插件市场",
   "owner": {
     "name": "MingChao",
     "email": "mingchao@example.com"
   },
   "plugins": [
     {
-      "name": "agent-programming",
-      "description": "AgentProgramming：融合 Superpowers 结构化工作流与四级缓存知识体系的新一代开发方法论。六阶段工作流 + 11 个技能 + 知识库持续积累。",
+      "name": "superprogramming",
+      "description": "SuperProgramming：融合 Superpowers 结构化工作流与四级缓存知识体系的新一代开发方法论。六阶段工作流 + 11 个技能 + 知识库持续积累。",
       "version": "1.0.0",
       "source": "./",
       "author": {

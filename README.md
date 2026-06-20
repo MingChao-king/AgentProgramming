@@ -41,7 +41,7 @@ cd /path/to/AgentProgramming
 /plugin marketplace add MingChao-king/AgentProgramming-marketplace
 
 # 安装插件
-/plugin install agent-programming@agent-programming-marketplace
+/plugin install superprogramming@superprogramming-marketplace
 ```
 
 ### 使用

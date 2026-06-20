@@ -23,7 +23,7 @@ escape_for_json() {
 }
 
 using_ap_escaped=$(escape_for_json "$using_ap_content")
-session_context="<EXTREMELY_IMPORTANT>\nYou are powered by AgentProgramming.\n\n**Below is the full content of your 'agent-programming:using-agent-programming' skill - your introduction to the AgentProgramming methodology. For all other skills, use the 'Skill' tool:**\n\n${using_ap_escaped}\n</EXTREMELY_IMPORTANT>"
+session_context="<EXTREMELY_IMPORTANT>\nYou are powered by SuperProgramming.\n\n**Below is the full content of your 'superprogramming:using-agent-programming' skill - your introduction to the SuperProgramming methodology. For all other skills, use the 'Skill' tool:**\n\n${using_ap_escaped}\n</EXTREMELY_IMPORTANT>"
 
 # Output context injection as JSON.
 # Claude Code hooks expect hookSpecificOutput.additionalContext (nested).
