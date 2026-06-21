@@ -40,6 +40,7 @@ Use the `Skill` tool with these exact names. **Never read skill files manually.*
 | `superprogramming:writing-plans` | After design is approved |
 | `superprogramming:test-driven-development` | During implementation (rigid) |
 | `superprogramming:subagent-driven-development` | ≥2 independent tasks (rigid) |
+| `superprogramming:dispatching-parallel-agents` | Parallel scheduling strategy |
 | `superprogramming:systematic-debugging` | Bug encountered (rigid) |
 | `superprogramming:requesting-code-review` | Before merging |
 | `superprogramming:verification-before-completion` | Before claiming "done" (rigid) |

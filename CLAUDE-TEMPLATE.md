@@ -53,6 +53,7 @@ Use the `Skill` tool with these exact names. Never read skill files manually.
 | Design approved | `superprogramming:writing-plans` |
 | Implementing | `superprogramming:test-driven-development` |
 | ≥2 independent tasks | `superprogramming:subagent-driven-development` |
+| Parallel scheduling | `superprogramming:dispatching-parallel-agents` |
 | Bug encountered | `superprogramming:systematic-debugging` |
 | Before merging | `superprogramming:requesting-code-review` |
 | Claiming "done" | `superprogramming:verification-before-completion` |
@@ -61,7 +62,26 @@ Use the `Skill` tool with these exact names. Never read skill files manually.
 | Parallel branches | `superprogramming:using-git-worktrees` |
 
 **Rigid skills** (TDD, subagent-driven-development, systematic-debugging, closing-the-loop, verification-before-completion): Follow strictly. No steps can be skipped.
-**Flexible skills** (brainstorming, writing-plans): Adapt principles to context, but core steps are mandatory.
+**Flexible skills** (brainstorming, writing-plans, dispatching-parallel-agents): Adapt principles to context, but core steps are mandatory.
+
+---
+
+## Subagent Roles
+
+SuperProgramming uses a 3-agent pipeline per task (learned from superpowers):
+
+| Role | Tools | Responsibility |
+|------|-------|---------------|
+| **Implementer** | Full | TDD (RED→GREEN→REFACTOR), self-review, git commit |
+| **Spec-Reviewer** | Read-only | Verify output matches task spec exactly — no more, no less |
+| **Quality-Reviewer** | Read-only | Verify code quality, patterns, DRY, security, error handling |
+
+**Pipeline**: implementer → spec-reviewer → quality-reviewer (each gate must pass before next).
+**Review Loop**: reviewer reports issues → implementer fixes → re-review (≤3 rounds).
+
+Additionally, lightweight **Scout** subagents (read-only) are used for parallel L4 exploration during brainstorming, returning structured summaries instead of raw file content.
+
+Subagent prompts follow a unified 5-segment structure: SCOPE → GOAL → CONSTRAINTS → DO NOT → RETURN.
 
 ---
 
