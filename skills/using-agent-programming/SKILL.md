@@ -85,13 +85,17 @@ SessionStart（自动注入）
 
 | 场景 | 触发哪些技能 | 结束时 |
 |------|------------|--------|
-| **新功能** | brainstorming（含测试场景设计）→ writing-plans → TDD（执行测试场景）→ ... | closing-the-loop ✅ |
+| **新功能** | brainstorming（含测试场景设计）→ writing-plans（拆TDD三元组）→ TDD（逐三元组 RED→GREEN→REFACTOR）→ code-review → verification → closing-the-loop | closing-the-loop ✅ |
 | **修 bug** | brainstorming（bug澄清+测试场景）→ systematic-debugging → verification-before-completion → closing-the-loop | closing-the-loop ✅ |
-| **改功能/加逻辑** | brainstorming（含测试场景设计）→ writing-plans → TDD（执行测试场景）→ ... | closing-the-loop ✅ |
-| **重构** | brainstorming（含测试场景设计）→ writing-plans → TDD（执行测试场景）→ ... | closing-the-loop ✅ |
+| **改功能/加逻辑** | brainstorming（含测试场景设计）→ writing-plans（拆TDD三元组）→ TDD（逐三元组 RED→GREEN→REFACTOR）→ code-review → verification → closing-the-loop | closing-the-loop ✅ |
+| **重构** | brainstorming（含测试场景设计）→ writing-plans（拆TDD三元组）→ TDD（逐三元组 RED→GREEN→REFACTOR）→ code-review → verification → closing-the-loop | closing-the-loop ✅ |
 | **配置变更** | brainstorming → closing-the-loop（mini，定义见下方） | closing-the-loop ✅ |
 
 **关键原则：测试场景设计是 brainstorming 的事，TDD 负责执行。** TDD 不重新设计测试场景——它从 brainstorming 产出中加载测试场景，转化为可执行的测试代码。如果 brainstorming 没产出测试场景，退回 brainstorming 补全再进 TDD。
+
+**关键原则：TDD 不是"实现后面的测试阶段"，而是实现方式本身。** writing-plans 拆出的每个实现任务都是 RED→GREEN→REFACTOR 三元组。RED（先写测试）在 GREEN（写实现）之前，不是之后。计划里"把所有测试打包成一个独立阶段放在最后"是 Waterfall，不是 TDD。
+
+**关键原则：完整执行链不可打断。** brainstorming → writing-plans → TDD（三元组）→ code-review → verification → closing-the-loop。code-review 和 verification 不是可选的——它们是 closing-the-loop 之前的质量门。
 
 **关键原则：只要有代码变更，就必须以 closing-the-loop 收尾。没有例外。**
 
@@ -183,6 +187,7 @@ SessionStart（自动注入）
 | "这是第二轮改动了，上次已经走过 closing-the-loop" | 每次代码变更独立做 closing-the-loop。上次闭环的是上一轮，这一轮的经验还没记录。 |
 | "这是紧急修复，没时间走流程" | 紧急修复才是最需要纪律的时候——越急越容易引入新 bug。mini brainstorming 只需 2 分钟。不记下来，下次同样紧急。 |
 | "就改一行配置/一个参数，不用走 brainstorming" | "一行"改错可以毁掉整个服务。配置变更至少走 mini brainstorming + closing-the-loop（mini）。 |
+| "测试放在最后统一写就行，TDD 太慢了" | TDD 不是独立测试阶段，是实现方式。RED（先写测试）→ GREEN（最小实现）→ REFACTOR（清理）必须在每个实现任务内完成。把所有测试打包成"阶段 10"放在"阶段 1-9 写完代码"后面 = Waterfall，不是 TDD。writing-plans 拆出的计划如果不含 TDD 三元组结构，计划本身就是错的。 |
 
 ## 用户指令
 
