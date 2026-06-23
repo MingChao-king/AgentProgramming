@@ -234,11 +234,20 @@ Scenario 4: 异常场景组合（A功能失败→B功能降级）
 
 ## Bug 修复模式
 
-当没有 writing-plans 产出时（Bug 修复），走精简版：
+当没有 writing-plans 产出时（Bug 修复），走此模式。
+
+**必须先走 brainstorming**（CLAUDE.md 场景表要求 `brainstorming → implementing(Bug模式)`）。brainstorming 已将 bug 分析 + 修复大纲写入 roadmap。如果 brainstorming 未执行，implementing 必须在写任何代码前完成以下 mini 版并记录 roadmap：
 
 ```
-mini brainstorming（澄清 bug 现象 + 涉及的类 + 修复思路）
-    → RED（复现测试，确认 bug 存在）
+前置：确认 brainstorming 已完成（bug 分析 + 修复大纲已写入 roadmap §5）
+  如未完成 → 先补 mini brainstorming：
+    1. 澄清 bug 现象和影响范围
+    2. 定位涉及的类/方法（git log 最近变更）
+    3. 修复思路（1-3 句话）
+    4. ★ 记录于 roadmap §5（日期 + bug 描述 + 涉及文件 + 修复思路）
+       ↓ 完成后才能进入 RED
+
+RED（复现测试，确认 bug 存在）
     → GREEN（最小修复，测试变绿）
     → REFACTOR（同类 bug 搜索，一并修复）
     → Subagent 审查（8 维，重点关注回归风险）
@@ -247,6 +256,7 @@ mini brainstorming（澄清 bug 现象 + 涉及的类 + 修复思路）
 ```
 
 **不先写复现测试 = 你不知道是"修好了"还是"恰好不报错了"。**
+**不先写 roadmap = 下次别人遇到同类 bug 还是从零开始。**
 
 ---
 
