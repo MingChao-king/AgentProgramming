@@ -1,7 +1,7 @@
 {
   "name": "superprogramming",
-  "description": "SuperProgramming：融合 Superpowers 的结构化工作流与四级缓存知识体系的新一代开发方法论。自动引导 brainstorming → outline-first → TDD → code-review → closing-the-loop 六阶段工作流，让每次编码都积累可复用的知识资产。",
-  "version": "1.0.0",
+  "description": "SuperProgramming v3.0：5技能精简工作流 + Roadmap 6节统一真相源 + 功能级细粒度质量保证。brainstorming → writing-plans → implementing(逐功能TDD→审查→测试) → closing-the-loop。",
+  "version": "3.0.0",
   "author": {
     "name": "MingChao",
     "email": "mingchao@example.com"
@@ -19,6 +19,9 @@
     "debugging",
     "workflows",
     "four-level-cache",
-    "closing-the-loop"
+    "closing-the-loop",
+    "roadmap",
+    "hotfix",
+    "implementing"
   ]
 }

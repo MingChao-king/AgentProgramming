@@ -14,32 +14,31 @@ You are powered by **SuperProgramming** — a fusion of [superpowers](https://gi
 1. **四级缓存 (L1→L4)**: L1(守则) → L2(通用经验) → L3(项目速查) → L4(源码唯一真相).
    Search cache before writing; update cache after completing.
 2. **大纲先行**: No code without a design outline. Write it to roadmap first.
-3. **防重复 (Anti-Duplication)**: Before creating anything new, run the 7-item checklist.
+3. **防重复 (Anti-Duplication)**: Before creating anything new, check roadmap §4 (existing methods index).
 4. **TDD 三元组**: Every implementation task = RED(test first) → GREEN(minimal impl) → REFACTOR(clean).
    TDD is not a "testing phase after coding" — it IS how you code.
-5. **闭环 (Closing the Loop)**: Every task ends with the 5-item stamp (code push + KB pull + L3 update + roadmap append + KB push).
-6. **L4 唯一真相**: L4 source code overrides everything. L3 is a cache — validate before trusting.
+5. **一功能一测一审**: Each sub-function goes through TDD → 8-dimension subagent review → full testing before moving on.
+6. **闭环 (Closing the Loop)**: Every task ends with roadmap update + cross-project experience extraction.
+7. **L4 唯一真相**: L4 source code overrides everything. L3 is a cache — validate before trusting.
 
 ---
 
-## Workflow (Six Phases)
+## Workflow
 
 ```
-SessionStart (auto) → brainstorming → writing-plans → TDD(triplets) →
-code-review → verification → closing-the-loop
+brainstorming → writing-plans → implementing(逐功能: TDD→审查→测试) → closing-the-loop
+                                                                        ↑
+                                                      hotfix ──────────┘
 ```
 
 **This is a cycle, not a one-time process.** Bug fix, feature tweak, refactor — all re-enter the workflow.
 
-| Scenario | Skills to Call | End With |
-|----------|---------------|----------|
-| New feature | brainstorming → writing-plans → TDD → code-review → verification → closing-the-loop | closing-the-loop |
-| Bug fix | brainstorming → systematic-debugging → verification → closing-the-loop | closing-the-loop |
-| Modify/add logic | brainstorming → writing-plans → TDD → code-review → verification → closing-the-loop | closing-the-loop |
-| Refactor | brainstorming → writing-plans → TDD → code-review → verification → closing-the-loop | closing-the-loop |
-| Config change | brainstorming → closing-the-loop (mini) | closing-the-loop |
-
-Config-only changes may use mini-closing-the-loop (skip L3 update and L2 write-back).
+| Scenario | Skills to Call |
+|----------|---------------|
+| New feature / Modify logic / Refactor | brainstorming → writing-plans → implementing → closing-the-loop |
+| Bug fix | brainstorming → implementing(Bug模式) → closing-the-loop |
+| Config change | brainstorming → closing-the-loop (mini) |
+| Emergency hotfix | hotfix (user explicitly invokes) |
 
 ---
 
@@ -47,41 +46,47 @@ Config-only changes may use mini-closing-the-loop (skip L3 update and L2 write-b
 
 Use the `Skill` tool with these exact names. Never read skill files manually.
 
-| Trigger | Skill |
-|---------|-------|
-| Before any coding | `superprogramming:brainstorming` |
-| Design approved | `superprogramming:writing-plans` |
-| Implementing | `superprogramming:test-driven-development` |
-| ≥2 independent tasks | `superprogramming:subagent-driven-development` |
-| Parallel scheduling | `superprogramming:dispatching-parallel-agents` |
-| Bug encountered | `superprogramming:systematic-debugging` |
-| After TDD, before verification | `superprogramming:requesting-code-review` |
-| Claiming "done" | `superprogramming:verification-before-completion` |
-| All tasks complete | `superprogramming:closing-the-loop` |
-| Branch cleanup | `superprogramming:finishing-a-development-branch` |
-| Parallel branches | `superprogramming:using-git-worktrees` |
+| Trigger | Skill | Type |
+|---------|-------|------|
+| Before any coding | `superprogramming:brainstorming` | Flexible |
+| Design approved | `superprogramming:writing-plans` | Flexible |
+| Implementing features | `superprogramming:implementing` | **Rigid** |
+| All tasks complete | `superprogramming:closing-the-loop` | **Rigid** |
+| Emergency fix | `superprogramming:hotfix` | Flexible |
 
-**Rigid skills** (TDD, subagent-driven-development, systematic-debugging, requesting-code-review, closing-the-loop, verification-before-completion): Follow strictly. No steps can be skipped.
-**Flexible skills** (brainstorming, writing-plans, dispatching-parallel-agents): Adapt principles to context, but core steps are mandatory.
+**Rigid skills** (implementing, closing-the-loop): Follow strictly. No steps can be skipped.
+**Flexible skills** (brainstorming, writing-plans, hotfix): Adapt principles to context, but core steps are mandatory.
 
 ---
 
 ## Subagent Roles
 
-SuperProgramming uses a 3-agent pipeline per task (learned from superpowers):
+SuperProgramming delegates work to subagents to save main context:
 
 | Role | Tools | Responsibility |
 |------|-------|---------------|
 | **Implementer** | Full | TDD (RED→GREEN→REFACTOR), self-review, git commit |
-| **Spec-Reviewer** | Read-only | Verify output matches task spec exactly — no more, no less |
-| **Quality-Reviewer** | Read-only | Verify code quality, patterns, DRY, security, error handling |
-
-**Pipeline**: implementer → spec-reviewer → quality-reviewer (each gate must pass before next).
-**Review Loop**: reviewer reports issues → implementer fixes → re-review (≤3 rounds).
-
-Additionally, lightweight **Scout** subagents (read-only) are used for parallel L4 exploration during brainstorming, returning structured summaries instead of raw file content.
+| **8 Reviewers** | Read-only | Parallel 8-dimension code review (correctness/null-safety/security/concurrency/error-handling/performance/regression/contract) |
+| **Testers** | Read-only | Sub-function full testing + cross-scenario integration testing |
+| **Scout** | Read-only | Lightweight L4 exploration during brainstorming |
+| **Write-back Agent** | Read+Write | L2 cross-project experience search and update |
 
 Subagent prompts follow a unified 5-segment structure: SCOPE → GOAL → CONSTRAINTS → DO NOT → RETURN.
+
+---
+
+## Roadmap (Single Source of Truth)
+
+All projects use a unified 6-section roadmap (`{PROJECT_NAME}-roadmap.md`). No separate experience.md.
+
+```
+## 1. 项目概览 — Tech stack, architecture decisions, project type
+## 2. 阶段规划 — Phase goals, feature list, status
+## 3. 接口清单 — API endpoints / Frontend components+routes / Plugin skills+hooks
+## 4. 现有封装方法索引 — Existing methods, utils, DTOs (anti-duplication)
+## 5. 实现记录 — Per-feature review results, test coverage, edge cases
+## 6. 经验提炼 — Project-specific pitfalls + cross-project patterns
+```
 
 ---
 
@@ -89,46 +94,32 @@ Subagent prompts follow a unified 5-segment structure: SCOPE → GOAL → CONSTR
 
 ```
 {CLAUDE_PLUGIN_ROOT}/knowledge-base/
-├── agent编程守则.md              ← L1: Complete methodology (709 lines)
+├── agent编程守则.md              ← L1: Complete methodology
 ├── 通用编码经验.md                ← L2: Cross-project pattern library
 ├── Agent四级缓存编程范式.md       ← Meta: Design rationale
 └── {PROJECT_NAME}/              ← Per-project
-    ├── {PROJECT_NAME}-roadmap.md       ← Project roadmap (timeline)
-    └── {PROJECT_NAME}-experience.md    ← L3: Project quick reference (≥150 lines, 6 modules)
+    └── {PROJECT_NAME}-roadmap.md    ← 6-section roadmap (single source of truth)
 ```
 
-**Remote**: `https://github.com/MingChao-king/superprogramming-knowledge-base`
-
-### Sync Commands
-
-```bash
-# Before task: pull latest
-cd "${CLAUDE_PLUGIN_ROOT}/knowledge-base" && git pull --ff-only
-
-# After task: push updates
-cd "${CLAUDE_PLUGIN_ROOT}/knowledge-base"
-git add -A
-git commit -m "roadmap: {PROJECT_NAME} - <brief description>"
-git push
-```
-
-**Warning**: Roadmap and L3 experience go in `knowledge-base/{PROJECT_NAME}/`, NOT in the code repo.
+**Local only**: Knowledge base is git-committed locally, not pushed to remote.
+**Roadmap is the single source of truth** — design, interfaces, experience, and progress all in one file.
 
 ---
 
 ## Anti-Duplication Checklist
 
-**Before writing ANY new class/method, run every check:**
+**Before writing ANY new class/method, run every check. Start with roadmap §4.**
 
 | # | Check | Command |
 |---|-------|---------|
-| 1 | New Service method? | `Grep "methodName" **/service/**/*.java` |
-| 2 | New DTO/VO? | `Glob **/dto/**/*.java`, `Glob **/vo/**/*.java` |
-| 3 | New util method? | `Grep "methodSig" **/utils/**/*.java`, `**/common/**/*.java` |
-| 4 | New Mapper method? | `Grep "methodName" **/mapper/**/*.java` |
-| 5 | New constant/enum? | `Grep "VALUE_NAME" **/enums/**` |
-| 6 | New dependency? | `Grep "artifactId" pom.xml` (or build.gradle) |
-| 7 | Similar method exists? | `Grep "businessKeyword" **/*.java` (fuzzy search) |
+| 1 | **Roadmap §4** | Read `{PROJECT_NAME}-roadmap.md` §4 — already indexed? |
+| 2 | New Service method? | `Grep "methodName" **/service/**/*.java` |
+| 3 | New DTO/VO? | `Glob **/dto/**/*.java`, `Glob **/vo/**/*.java` |
+| 4 | New util method? | `Grep "methodSig" **/utils/**/*.java`, `**/common/**/*.java` |
+| 5 | New Mapper method? | `Grep "methodName" **/mapper/**/*.java` |
+| 6 | New constant/enum? | `Grep "VALUE_NAME" **/enums/**` |
+| 7 | New dependency? | `Grep "artifactId" pom.xml` (or build.gradle) |
+| 8 | Similar method exists? | `Grep "businessKeyword" **/*.java` (fuzzy search) |
 
 **Reuse if**: existing method differs by ≤2 words in name, OR existing DTO covers ≥80% of needed fields.
 
@@ -144,8 +135,6 @@ L3 last updated > 7 days → verify signatures of top 3 key classes you'll use
 Signature mismatch → update L3, trust L4
 ```
 
-**Validation markers**: ✅(verified) ⚠️(overdue) ❌(stale — must update now)
-
 ---
 
 ## Write-Back Criteria
@@ -154,13 +143,9 @@ After task completion:
 
 ```
 Task complete → Cross-project lesson learned?
-├── YES → Search L2 (通用编码经验.md) for existing entry
-│        ├── Found → Merge/append to existing entry
-│        └── Not found → Create new L2 entry
-│                       Format: ✅ recommended + ❌ avoided + code comparison
-│                       Reference field: tech concept only (e.g., "jjwt 0.12.x"), NOT project name
-└── NO  → Update L3 experience.md (follow 6-module quality standard)
-          Append one line to roadmap.md (date | step | what | files | verification)
+├── YES → Delegate to subagent: search L2 (通用编码经验.md) → merge or create entry
+│         Format: ✅ recommended + ❌ avoided + code comparison
+└── NO  → Record in roadmap §6: "本次无 L2 回写"
 ```
 
 ---

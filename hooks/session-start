@@ -18,7 +18,7 @@ escape_for_json() {
     printf '%s' "$s"
 }
 
-# Lightweight bootstrap — ~600 tokens.
+# Lightweight bootstrap — ~500 tokens.
 # The full methodology lives in:
 #   1. Project root CLAUDE.md (auto-loaded by Claude Code)
 #   2. L1: agent编程守则.md in the knowledge base
@@ -34,19 +34,20 @@ code patterns, and the SuperProgramming methodology. Read it first.
 ## Skill Discovery
 Use the `Skill` tool with these exact names. **Never read skill files manually.**
 
-| Skill | When |
-|-------|------|
-| `superprogramming:brainstorming` | Before any coding task |
-| `superprogramming:writing-plans` | After design is approved |
-| `superprogramming:test-driven-development` | During implementation (rigid) |
-| `superprogramming:subagent-driven-development` | ≥2 independent tasks (rigid) |
-| `superprogramming:dispatching-parallel-agents` | Parallel scheduling strategy |
-| `superprogramming:systematic-debugging` | Bug encountered (rigid) |
-| `superprogramming:requesting-code-review` | After TDD, before verification — 8-dimension exhaustive (rigid) |
-| `superprogramming:verification-before-completion` | Before claiming "done" (rigid) |
-| `superprogramming:closing-the-loop` | After all tasks complete (rigid) |
-| `superprogramming:finishing-a-development-branch` | Branch cleanup |
-| `superprogramming:using-git-worktrees` | Parallel branch work |
+| Skill | When | Type |
+|-------|------|------|
+| `superprogramming:brainstorming` | Before any coding task | Flexible |
+| `superprogramming:writing-plans` | After design is approved | Flexible |
+| `superprogramming:implementing` | During implementation (TDD → review → test) | **Rigid** |
+| `superprogramming:closing-the-loop` | After all tasks complete | **Rigid** |
+| `superprogramming:hotfix` | User explicitly invokes `skill:hotfix` | Flexible |
+
+## Workflow
+```
+brainstorming → writing-plans → implementing(逐功能: TDD→审查→测试) → closing-the-loop
+                                                                           ↑
+                                                         hotfix ──────────┘
+```
 
 ## Hard Gates
 - If ANY SuperProgramming skill has ≥1% applicability to what you're doing, you MUST call it.
